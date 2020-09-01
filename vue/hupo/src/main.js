@@ -12,29 +12,36 @@ import { Toast } from "vant";
 import vant from 'vant'
 //引入vant css 文件
 import 'vant/lib/index.css'
+
 //配置axios到vue原型
 Vue.prototype.axios= axios
 axios.defaults.baseURL='http://127.0.0.1:3000';
 Vue.config.productionTip = false
 // 全局使用vant组件
 Vue.use(vant);
+//图片懒加载!第二个属性为加载中的显示
 Vue.use(lazyload,{
-  loading:'../title/timg.gif'
+  loading:require('./title/timg.gif')
 })
 Vue.use(Toast);
 
+//配置的全局路由守卫
 router.beforeEach((to,from,next)=>{
-  let islogin=localStorage.username
+  let islogin=sessionStorage.getItem('username')
   if(to.meta.guard){//判断是否为true
     if(islogin){
       next()
+      return
     }else{
       next('login')
+      return
     }
   }else{
     next()
+    return
   }
-})
+});
+
 new Vue({
   router,
   store,

@@ -93,18 +93,18 @@
            <router-link to="/">电脑版</router-link>|
            <router-link to="/">会员中心</router-link>
        </div>
-       <!-- 底部标签结束 -->
-        <tabbar></tabbar>
+       <!-- 底部标签结束
+        <tabbar></tabbar> -->
     </div> 
 </template>
 
 <script>
-import tabbar from '../components/tabbar'
+// import tabbar from '../components/tabbar'
 
 export default {
-    components:{
-        tabbar
-    },
+    // components:{
+    //     tabbar
+    // },
     data(){
         return{
             commdity:[],

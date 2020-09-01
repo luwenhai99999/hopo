@@ -30,11 +30,8 @@
 </template>
 
 <script>
-import tabbar from '../components/tabbar'
 export default {
-    components:{
-        tabbar
-    },
+    
     data(){
         return{
             tabbarImgleft:require('../title/return1.png'),

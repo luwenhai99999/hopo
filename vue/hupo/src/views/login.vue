@@ -93,12 +93,11 @@ export default {
             } else {
               Toast({
                 message: "登录成功",
-                
               });
               this.$store.commit('login_set',res.data.result[0]);
               sessionStorage.setItem('userid',res.data.result[0].id)
               sessionStorage.setItem('username',res.data.result[0].phone)
-                this.$router.push('person')
+                this.$router.push('/')
             }
           });
       }

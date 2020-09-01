@@ -21,7 +21,7 @@
                 <img :src="props.active ? icon.activecart : icon.inactivecart" />
                 </template>
             </van-tabbar-item>
-             <van-tabbar-item >
+             <van-tabbar-item to="person" route>
                 <span>会员中心</span>
                 <template #icon="props">
                 <img :src="props.active ? icon.activeVip : icon.inactiveVip" />

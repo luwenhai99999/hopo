@@ -7,17 +7,12 @@ import person from '../views/person.vue'
 import loginRegister from '../views/login-register'
 import shopping from '../views/shopping'
 import Search from '../components/search'
-import list from '../components/demo/list-demo'
-import de from '../components/demo/details-demo'
 // import { Search } from 'vant'
 
 Vue.use(VueRouter)
 
   const routes = [
-    {
-      path: '/de',
-      component: de,
-    },
+  
     {
       path: '/shoppingcar',
       component: shopping,
@@ -29,6 +24,7 @@ Vue.use(VueRouter)
       meta:{
         guard:true
       }
+      
     },
     {
       path: '/login',
@@ -42,10 +38,6 @@ Vue.use(VueRouter)
       path: '/details/:kid',
       component: details,
       props:true
-    },
-    {
-      path: '/list',
-      component: list
     },
     {
       path: '/search',
@@ -67,19 +59,13 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]
-//路由守卫
-// router.beforeEach((to,from,next)=>{
-//   let islogin=localStorage.username
-//   if(to.meta.guard){//判断是否为true
-//     if(islogin){
-//       next()
-//     }else{
-//       next('login')
-//     }
-//   }else{
-//     next()
-//   }
-// })
+
+//vue Uncaught Error: Redirected when going from “/*“ to “/*“ 路由报错
+//配置此段代码可解决!报错问题! 或者在重新下载依赖包时，安装的vue-router还是之前出错的那个版本，解决方法也很简单，在项目目录下运行 npm i vue-router@3.0 -S 即可。
+const routerPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch(error=> error)
+}
 const router = new VueRouter({
   routes,
  
